@@ -13,7 +13,6 @@ struct Cliente {
     string cnh;
 };
 
-
 struct Veiculo{
 
     string renavam;
