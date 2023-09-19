@@ -242,13 +242,13 @@ void ListarVeiculo(const vector<Veiculo>& veiculos) {
 
 void LocalizarVeiculoPorPlaca(const vector<Veiculo>& veiculos) {
     string placaParaLocalizar;
-    cout << "Digite a placa do veículo que deseja localizar: ";
+    cout << "Digite a placa do veiculo que deseja localizar: ";
     cin >> placaParaLocalizar;
 
     for (const Veiculo& veiculo : veiculos) {
         if (veiculo.PlacaDoVeiculo == placaParaLocalizar) {
             cout << "Renavam: " << veiculo.Renavam << endl;
-            cout << "Placa do Veículo: " << veiculo.PlacaDoVeiculo << endl;
+            cout << "Placa do Veiculo: " << veiculo.PlacaDoVeiculo << endl;
             cout << "Data e Hora de Retirada: " << veiculo.Data_HoraRetirada << endl;
             cout << "Data e Hora de Entrega: " << veiculo.Data_HoraEntrega << endl;
             cout << "Loja de Retirada: " << veiculo.Loja_Retirada << endl;
@@ -256,7 +256,7 @@ void LocalizarVeiculoPorPlaca(const vector<Veiculo>& veiculos) {
         }
     }
 
-    cout << "Placa do veículo não encontrada." << endl;
+    cout << "Placa do veiculo nao encontrada." << endl;
 }
 
 
@@ -268,9 +268,9 @@ int main() {
     do {
         cout << "Menu Principal:" << endl;
         cout << "1. Menu de Clientes" << endl;
-        cout << "2. Menu de Veículos" << endl;
+        cout << "2. Menu de Veiculos" << endl;
         cout << "0. Sair" << endl;
-        cout << "Escolha uma opção: ";
+        cout << "Escolha uma opcao: ";
         cin >> escolha;
 
         switch (escolha) {
@@ -284,7 +284,7 @@ int main() {
                     cout << "4. Listar Clientes" << endl;
                     cout << "5. Localizar Cliente (Por CPF)" << endl;
                     cout << "0. Voltar ao Menu Principal" << endl;
-                    cout << "Escolha uma opção: ";
+                    cout << "Escolha uma opcao: ";
                     cin >> escolhaCliente;
 
                     switch (escolhaCliente) {
@@ -306,7 +306,7 @@ int main() {
                         case 0:
                             break;
                         default:
-                            cout << "Opção inválida." << endl;
+                            cout << "Opcao invalida." << endl;
                     }
                 } while (escolhaCliente != 0);
                 break;
@@ -314,14 +314,14 @@ int main() {
             case 2:
                 int escolhaVeiculo;
                 do {
-                    cout << "\nMenu de Veículos:" << endl;
-                    cout << "1. Incluir Veículo" << endl;
-                    cout << "2. Excluir Veículo" << endl;
-                    cout << "3. Alterar Veículo (Por Placa)" << endl;
-                    cout << "4. Listar Veículos" << endl;
-                    cout << "5. Localizar Veículo (Por Placa)" << endl;
+                    cout << "\nMenu de Veiculos:" << endl;
+                    cout << "1. Incluir Veiculo" << endl;
+                    cout << "2. Excluir Veiculo" << endl;
+                    cout << "3. Alterar Veiculo (Por Placa)" << endl;
+                    cout << "4. Listar Veiculos" << endl;
+                    cout << "5. Localizar Veiculo (Por Placa)" << endl;
                     cout << "0. Voltar ao Menu Principal" << endl;
-                    cout << "Escolha uma opção: ";
+                    cout << "Escolha uma opcao: ";
                     cin >> escolhaVeiculo;
 
                     switch (escolhaVeiculo) {
@@ -343,7 +343,7 @@ int main() {
                         case 0:
                             break;
                         default:
-                            cout << "Opção inválida." << endl;
+                            cout << "Opcao invalida." << endl;
                     }
                 } while (escolhaVeiculo != 0);
                 break;
@@ -353,7 +353,7 @@ int main() {
                 break;
 
             default:
-                cout << "Opção inválida." << endl;
+                cout << "Opcao invalida." << endl;
         }
     } while (escolha != 0);
 
