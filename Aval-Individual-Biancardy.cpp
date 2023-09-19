@@ -71,14 +71,14 @@ void alterarCliente() {
                 getline(cin, cliente.Nome);
             }
 
-            cout << "Data de nascimento atual: " << cliente.dataNascimento << "\nDeseja alterar? (s/n) ";
+            cout << "Data de nascimento atual: " << cliente.dataNascimento << endl << "Deseja alterar? (s/n) ";
             cin >> resposta;
             if (resposta == 's') {
                 cout << "Digite a nova data de nascimento (DD/MM/AAAA): ";
                 cin >> cliente.dataNascimento;
             }
 
-            cout << "CNH atual: " << cliente.CNH << "\nDeseja alterar? (s/n) ";
+            cout << "CNH atual: " << cliente.CNH << endl << "Deseja alterar? (s/n) ";
             cin >> resposta;
             if (resposta == 's') {
                 cout << "Digite a nova CNH: ";
@@ -93,7 +93,7 @@ void alterarCliente() {
 
 void listarClientes() {
     for (const auto& cliente : clientes) {
-        cout << "CPF: " << cliente.CPF << "\nNome: " << cliente.Nome << "\nData de Nascimento: " << cliente.dataNascimento << "\nCNH: " << cliente.CNH << "\n\n";
+        cout << "CPF: " << cliente.CPF << endl << "Nome: " << cliente.Nome << endl << "Data de Nascimento: " << cliente.dataNascimento << endl << "CNH: " << cliente.CNH << endl << endl;
     }
 }
 
@@ -104,7 +104,7 @@ void localizarCliente() {
 
     for (const auto& cliente : clientes) {
         if (cliente.CPF == cpf) {
-            cout << "CPF: " << cliente.CPF << "\nNome: " << cliente.Nome << "\nData de Nascimento: " << cliente.dataNascimento << "\nCNH: " << cliente.CNH << "\n\n";
+            cout << "CPF: " << cliente.CPF << endl << "Nome: " << cliente.Nome << endl << "Data de Nascimento: " << cliente.dataNascimento << endl << "CNH: " << cliente.CNH << endl << endl;
             return;
         }
     }
@@ -195,7 +195,7 @@ void alterarVeiculo() {
     for (auto& veiculo : veiculos) {
         if (veiculo.placaVeiculo == placa) {
             cout << "Veículo encontrado!" << endl;
-            cout << "Renavan atual: " << veiculo.Renavan << "\nDeseja alterar? (s/n) ";
+            cout << "Renavan atual: " << veiculo.Renavan << endl << "Deseja alterar? (s/n) ";
             char resposta;
             cin >> resposta;
             if (resposta == 's') {
@@ -203,7 +203,7 @@ void alterarVeiculo() {
                 cin >> veiculo.Renavan;
             }
 
-            cout << "Placa atual: " << veiculo.placaVeiculo << "\nDeseja alterar? (s/n) ";
+            cout << "Placa atual: " << veiculo.placaVeiculo << endl << "Deseja alterar? (s/n) ";
             cin >> resposta;
             if (resposta == 's') {
                 cout << "Digite a nova placa: ";
@@ -211,7 +211,7 @@ void alterarVeiculo() {
                 getline(cin, veiculo.placaVeiculo);
             }
 
-            cout << "Data e hora de retirada atual: " << veiculo.dataHoraRetirada << "\nDeseja alterar? (s/n) ";
+            cout << "Data e hora de retirada atual: " << veiculo.dataHoraRetirada << endl << "Deseja alterar? (s/n) ";
             cin >> resposta;
             if (resposta == 's') {
                 cout << "Digite a nova data e hora de retirada (DD/MM/AAAA HH:MM): ";
@@ -219,7 +219,7 @@ void alterarVeiculo() {
                 getline(cin, veiculo.dataHoraRetirada);
             }
 
-            cout << "Data e hora de entrega atual: " << veiculo.dataHoraEntrega << "\nDeseja alterar? (s/n) ";
+            cout << "Data e hora de entrega atual: " << veiculo.dataHoraEntrega << endl << "Deseja alterar? (s/n) ";
             cin >> resposta;
             if (resposta == 's') {
                 cout << "Digite a nova data e hora de entrega (DD/MM/AAAA HH:MM): ";
@@ -227,7 +227,7 @@ void alterarVeiculo() {
                 getline(cin, veiculo.dataHoraEntrega);
             }
 
-            cout << "Loja de retirada atual: " << veiculo.lojaRetirada << "\nDeseja alterar? (s/n) ";
+            cout << "Loja de retirada atual: " << veiculo.lojaRetirada << endl << "Deseja alterar? (s/n) ";
             cin >> resposta;
             if (resposta == 's') {
                 cout << "Digite a nova loja de retirada: ";
@@ -243,7 +243,7 @@ void alterarVeiculo() {
 
 void listarVeiculos() {
     for (const auto& veiculo : veiculos) {
-        cout << "Renavan: " << veiculo.Renavan << "\nPlaca: " << veiculo.placaVeiculo << "\nData e hora de retirada: " << veiculo.dataHoraRetirada << "\nData e hora de entrega: " << veiculo.dataHoraEntrega << "\nLoja de retirada: " << veiculo.lojaRetirada << "\n\n";
+        cout << "Renavan: " << veiculo.Renavan << endl << "Placa: " << veiculo.placaVeiculo << endl << "Data e hora de retirada: " << veiculo.dataHoraRetirada << endl << "Data e hora de entrega: " << veiculo.dataHoraEntrega << endl << "Loja de retirada: " << veiculo.lojaRetirada << endl << endl;
     }
 }
 
@@ -254,7 +254,7 @@ void localizarVeiculo() {
 
     for (const auto& veiculo : veiculos) {
         if (veiculo.placaVeiculo == placa) {
-            cout << "Renavan: " << veiculo.Renavan << "\nPlaca: " << veiculo.placaVeiculo << "\nData e hora de retirada: " << veiculo.dataHoraRetirada << "\nData e hora de entrega: " << veiculo.dataHoraEntrega << "\nLoja de retirada: " << veiculo.lojaRetirada << "\n\n";
+            cout << "Renavan: " << veiculo.Renavan << endl << "Placa: " << veiculo.placaVeiculo << endl << "Data e hora de retirada: " << veiculo.dataHoraRetirada << endl << "Data e hora de entrega: " << veiculo.dataHoraEntrega << endl << "Loja de retirada: " << veiculo.lojaRetirada << endl << endl;
             return;
         }
     }
