@@ -469,6 +469,35 @@ void incluirLocacao(vector<Locacao>& locacoes, vector<Cliente>& clientes, vector
 
 //Função para alterar Locação
 
+void alterarLocacao(vector<Locacao>& locacoes, vector<Veiculo>&veiculos, vector<Cliente>&clientes) {
+    string placa, cpf;
+
+    cout << "Digite a placa do veículo: ";
+    cin >> placa;
+
+    cout << "Locações associadas a este veículo: "<<endl;
+    for (const auto& loc : locacoes) {
+        if (loc.veiculo->placadoveiculo == placa) {
+            cout << "CPF: " << loc.cliente->cpf << ", Nome: " << loc.cliente->nome << endl;
+        }
+    }
+
+    cout << "Digite o CPF do cliente que deseja alterar a locação: ";
+    cin >> cpf;
+
+    for (auto& loc : locacoes) {
+        if (loc.veiculo->placadoveiculo == placa && loc.cliente->cpf == cpf) {
+            cout << "Digite a data e hora real de entrega (DD/MM/AAAA HH:MM): ";
+            cin.ignore();
+            getline(cin, loc.dataHoraEntregaReal);
+            cout << "Locação alterada com sucesso!"<<endl;
+            return;
+        }
+    }
+    cout << "Locação não encontrada!"<<endl;
+}
+
+
 //Função para listar Locação
 
 //Função Menu Locação
@@ -523,6 +552,46 @@ void excluirOcorrencia(vector<Locacao>& locacoes) {
 }
 
 //Função para alterar ocorrência
+
+void alterarOcorrencia(vector<Locacao>& locacoes) {
+    string cpf, placa;
+    cout << "Digite o cpf do cliente: "<<endl;
+    cin >> cpf;
+    cout << "Digite a placa do veículo: "<<endl;
+    cin >> placa;
+
+    for (auto& loc : locacoes) {
+        if (loc.cliente->cpf == cpf && loc.veiculo->placadoveiculo == placa) {
+            cout << "Descrição atual da ocorrência: " << loc.ocorrencia.descricao <<endl<< "Deseja alterar? ('s' para Sim ou 'n' para Não) "<< endl;
+            char resposta;
+            cin >> resposta;
+            if (resposta == 's') {
+                cout << "Digite a nova descrição da ocorrência: ";
+                cin.ignore();
+                getline(cin, loc.ocorrencia.descricao);
+            }
+
+            cout << "Data e hora atual da ocorrência: " << loc.ocorrencia.dataHora <<endl<< "Deseja alterar? ('s' para Sim ou 'n' para Não) ";
+            cin >> resposta;
+            if (resposta == 's') {
+                cout << "Digite a nova data e hora da ocorrência (DD/MM/AAAA HH:MM): ";
+                cin.ignore();
+                getline(cin, loc.ocorrencia.dataHora);
+            }
+
+            cout << "Número da apólice atual: " << loc.ocorrencia.numeroApolice <<endl<< "Deseja alterar? ('s' para Sim ou 'n' para Não) ";
+            cin >> resposta;
+            if (resposta == 's') {
+                cout << "Digite o novo número da apólice: ";
+                cin >> loc.ocorrencia.numeroApolice;
+            }
+
+            cout << "Ocorrência alterada com sucesso!"<<endl;
+            return;
+        }
+    }
+    cout << "Ocorrência ou locação não encontrada!"<<endl;
+}
 
 //Função para listar ocorrência
 
