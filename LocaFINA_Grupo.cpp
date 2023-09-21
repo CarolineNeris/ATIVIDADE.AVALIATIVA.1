@@ -499,6 +499,14 @@ void alterarLocacao(vector<Locacao>& locacoes, vector<Veiculo>&veiculos, vector<
 
 
 //Função para listar Locação
+void listarLocacoes(vector<Locacao>& locacoes, vector<Veiculo>&veiculos, vector<Cliente>&clientes) {
+    for (const auto& loc : locacoes) {
+        cout << "CPF: " << loc.cliente->cpf << ", Nome: " << loc.cliente->nome
+             << ", Placa: " << loc.veiculo->placadoveiculo << ", Retirada Realizada: " << loc.realizada 
+             << ", Data/Hora Retirada: " << loc.dataHoraRetiradaReal
+             << ", Data/Hora Entrega: " << loc.dataHoraEntregaReal <<endl;
+    }
+}
 
 //Função Menu Locação
 
@@ -594,6 +602,29 @@ void alterarOcorrencia(vector<Locacao>& locacoes) {
 }
 
 //Função para listar ocorrência
+void listarOcorrenciasPorCliente(vector<Locacao>& locacoes) {
+    string cpf;
+    cout << "Digite o cpf do cliente: "<<endl;
+    cin >> cpf;
+
+    for (const auto& loc : locacoes) {
+        if (loc.cliente->cpf == cpf && !loc.ocorrencia.descricao.empty()) {
+            cout << "Descrição: " << loc.ocorrencia.descricao << ", Data/Hora: " << loc.ocorrencia.dataHora << ", Apólice: " << loc.ocorrencia.numeroApolice <<endl;
+        }
+    }
+}
+
+void listarOcorrenciasPorVeiculo(vector<Locacao>& locacoes) {
+    string placa;
+    cout << "Digite a placa do veículo: "<<endl;
+    cin >> placa;
+
+    for (const auto& loc : locacoes) {
+        if (loc.veiculo->placadoveiculo == placa && !loc.ocorrencia.descricao.empty()) {
+            cout << "Descrição: " << loc.ocorrencia.descricao << ", Data/Hora: " << loc.ocorrencia.dataHora << ", Apólice: " << loc.ocorrencia.numeroApolice << "."<<endl;
+        }
+    }
+}
 
 //Função Menu ocorrência
 
