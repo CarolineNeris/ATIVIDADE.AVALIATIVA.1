@@ -440,6 +440,33 @@ void incluirLocacao(vector<Locacao>& locacoes, vector<Cliente>& clientes, vector
 
 //Função para excluir Locação
 
+    string placa, cpf;
+
+    cout << "Digite a placa do veículo: ";
+    cin >> placa;
+
+    cout << "Locações associadas a este veículo: "<<endl;
+    for (const auto& loc : locacoes) {
+        if (loc.veiculo->placadoveiculo == placa) {
+            cout << "CPF: " << loc.cliente->cpf << ", Nome: " << loc.cliente->nome <<endl;
+        }
+    }
+
+    cout << "Digite o CPF do cliente que deseja excluir a locação: ";
+    cin >> cpf;
+
+    auto it = remove_if(locacoes.begin(), locacoes.end(), [&placa, &cpf](const Locacao& loc) {
+        return loc.veiculo->placadoveiculo == placa && loc.cliente->cpf == cpf;
+    });
+
+    if (it != locacoes.end()) {
+        locacoes.erase(it, locacoes.end());
+        cout << "Locação excluída com sucesso!"<<endl;
+    } else {
+        cout << "Locação não encontrada!"<<endl;
+    }
+}
+
 //Função para alterar Locação
 
 //Função para listar Locação
@@ -451,6 +478,30 @@ void incluirLocacao(vector<Locacao>& locacoes, vector<Cliente>& clientes, vector
 
 
 //Função incluir ocorrência
+
+void incluirOcorrencia(vector<Locacao>& locacoes, vector<Cliente>& clientes, vector<Veiculo>&veiculos) {
+    string cpf, placa;
+    cout << "Digite o cpf do cliente: "<<endl;
+    cin >> cpf;
+    cout << "Digite a placa do veículo: "<<endl;
+    cin >> placa;
+
+    for (auto& loc : locacoes) {
+        if (loc.cliente->cpf == cpf && loc.veiculo->placadoveiculo == placa) {
+            cout << "Digite a descrição da ocorrência: "<<endl;
+            cin.ignore();
+            getline(cin, loc.ocorrencia.descricao);
+            cout << "Digite a data e hora da ocorrência (DD/MM/AAAA HH:MM): "<<endl;
+            getline(cin, loc.ocorrencia.dataHora);
+            cout << "Digite o número da apólice: "<<endl;
+            cin >> loc.ocorrencia.numeroApolice;
+            cout << "Ocorrência registrada com sucesso!"<<endl;
+            return;
+        }
+    }
+    cout << "Locação não encontrada!"<<endl;
+}
+
 
 //Função para excluir ocorrência
 
