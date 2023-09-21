@@ -476,7 +476,7 @@ void excluirLocacao(vector<Locacao>& locacoes, vector<Cliente>& clientes) {
     }
     
     
-    if(flag1 && flag2){
+    if(flag1 && flag2){ 
         locacoes.erase(locacoes.begin()+ cont); 
         cout<<"Locação excluida!"<<endl<<endl;
     } else {
