@@ -385,7 +385,6 @@ void menuVeiculos(vector<Veiculo>& veiculos) {
 
 //Função para inlcuir Locação
 
-
 void incluirLocacao(vector<Locacao>& locacoes, vector<Cliente>& clientes, vector<Veiculo>& veiculos) {
     string cnh, placa;
 
@@ -439,7 +438,7 @@ void incluirLocacao(vector<Locacao>& locacoes, vector<Cliente>& clientes, vector
 
 
 //Função para excluir Locação
-
+void excluirLocacao(vector<Locacao>& locacoes, vector<Cliente>& clientes) {
     string placa, cpf;
 
     cout << "Digite a placa do veículo: ";
@@ -509,6 +508,39 @@ void listarLocacoes(vector<Locacao>& locacoes, vector<Veiculo>&veiculos, vector<
 }
 
 //Função Menu Locação
+
+void menuLocacoes(vector<Locacao>& locacoes, vector<Veiculo>&veiculos, vector<Cliente>&clientes) {
+    int opcao;
+
+    do {
+        cout << "Módulo de Gestão de Locações"<<endl;
+        cout << "1. Incluir Locação"<<endl<<"2. Excluir Locação"<<endl<<"3. Alterar Locação"<<endl<<"4. Listar Locações"<<endl<<"0. Sair"<<endl;
+        cout << "Digite uma opção: ";
+        cin >> opcao;
+
+        switch (opcao) {
+        case 1:
+            incluirLocacao(locacoes,clientes, veiculos);
+            break;
+        case 2:
+            excluirLocacao(locacoes,clientes);
+            break;
+        case 3:
+            alterarLocacao(locacoes, veiculos, clientes);
+            break;
+        case 4:
+            listarLocacoes(locacoes, veiculos, clientes);
+            break;
+        case 0:
+            cout << "Saindo..."<<endl;
+            break;
+        default:
+            cout << "Opção inválida!"<<endl;
+            break;
+        }
+
+    } while (opcao != 0);
+}
 
 
 //QUARTA E QUINTA PARTE
@@ -628,16 +660,57 @@ void listarOcorrenciasPorVeiculo(vector<Locacao>& locacoes) {
 
 //Função Menu ocorrência
 
+void menuOcorrencias(vector<Locacao>& locacoes, vector<Cliente>& clientes, vector<Veiculo>&veiculos) {
+    int opcao;
+
+    do {
+        cout << "Módulo de Gestão de Ocorrências" <<endl;
+        cout << "1. Incluir Ocorrência."<<endl<<"2. Excluir Ocorrência."<<endl<<"3. Alterar Ocorrência."<<endl<< "4. Listar Ocorrências por Cliente." <<endl<<"5. Listar Ocorrências por Veículo."<<endl<< "0. Sair."<<endl;
+        cout << "Digite uma opção: "<<endl;
+        cin >> opcao;
+
+        switch (opcao) {
+        case 1:
+            incluirOcorrencia(locacoes, clientes, veiculos);
+            break;
+        case 2:
+            excluirOcorrencia(locacoes);
+            break;
+        case 3:
+            alterarOcorrencia(locacoes);
+            break;
+        case 4:
+            listarOcorrenciasPorCliente(locacoes);
+            break;
+        case 5:
+            listarOcorrenciasPorVeiculo(locacoes);
+            break;
+        case 0:
+            cout << "Saindo..."<<endl;
+            break;
+        default:
+            cout << "Opção inválida."<<endl;
+            break;
+        }
+
+    } while (opcao != 0);
+}
+
+
 int main() {
     int opcao;
 
     vector<Cliente> clientes;
     vector<Veiculo> veiculos;
+    vector<Locacao> locacoes;
+
     do {
         system("clear");
         cout << "LocaFINA S/A" << endl;
         cout << "1. Gestão de Clientes." << endl;
         cout << "2. Gestão de Veículos." << endl;
+        cout << "3. Gestão de Locação." << endl;
+        cout << "4. Gestão de Ocorrência." << endl;
         cout << "0. Sair." << endl;
         cout << "Escolha uma das opções :" << endl;;
         cin >> opcao;
@@ -648,6 +721,12 @@ int main() {
             break;
         case 2:
             menuVeiculos(veiculos);
+            break;
+        case 3:
+            menuLocacoes(locacoes, veiculos,clientes);
+            break;
+        case 4:
+            menuOcorrencias(locacoes,clientes, veiculos);
             break;
         case 0:
             cout << "Encerrando o programa..." << endl;
