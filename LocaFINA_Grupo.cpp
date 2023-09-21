@@ -385,6 +385,59 @@ void menuVeiculos(vector<Veiculo>& veiculos) {
 
 //Função para inlcuir Locação
 
+
+void incluirLocacao(vector<Locacao>& locacoes, vector<Cliente>& clientes, vector<Veiculo>& veiculos) {
+    string cnh, placa;
+
+    cout << "Digite o CNH do cliente: "<<endl;
+    cin >> cnh;
+
+    // Verificar se o cliente existe:
+    Cliente* clientePtr = nullptr;
+    for (auto& c : clientes) {
+        if (c.cnh == cnh) {
+            clientePtr = &c;
+            break;
+        }
+    }
+
+    if (!clientePtr) {
+        cout << "Cliente não encontrado." <<endl;
+        return;
+    }
+
+    cout << "Digite a placa do veículo: ";
+    cin >> placa;
+
+    // Verificar se o veículo existe:
+    Veiculo* veiculoPtr = nullptr;
+    for (auto& v : veiculos) {
+        if (v.placadoveiculo == placa) {
+            veiculoPtr = &v;
+            break;
+        }
+    }
+
+    if (!veiculoPtr) {
+        cout << "Veículo não encontrado!"<<endl;
+        return;
+    }
+
+    Locacao novaLocacao;
+    novaLocacao.cliente = clientePtr;
+    novaLocacao.veiculo = veiculoPtr;
+
+    cout << "Digite a data e hora real de retirada (DD/MM/AAAA HH:MM): ";
+    cin.ignore();
+    getline(cin, novaLocacao.dataHoraRetiradaReal);
+    cout << "Retirada já realizada? ('s' para Sim ou 'n' para Não): ";
+    cin >> novaLocacao.realizada;
+
+    locacoes.push_back(novaLocacao);
+    cout << "Locação registrada com sucesso!"<<endl;
+}
+
+
 //Função para excluir Locação
 
 //Função para alterar Locação
@@ -393,6 +446,36 @@ void menuVeiculos(vector<Veiculo>& veiculos) {
 
 //Função Menu Locação
 
+
+//QUARTA E QUINTA PARTE
+
+
+//Função incluir ocorrência
+
+//Função para excluir ocorrência
+
+void excluirOcorrencia(vector<Locacao>& locacoes) {
+    string cpf, placa;
+    cout << "Digite o cpf do cliente: "<<endl;
+    cin >> cpf;
+    cout << "Digite a placa do veículo: "<<endl;
+    cin >> placa;
+
+    for (auto& loc : locacoes) {
+        if (loc.cliente->cpf == cpf && loc.veiculo->placadoveiculo == placa) {
+            loc.ocorrencia = Ocorrencia();  // Resetar a ocorrência para um estado vazio
+            cout << "Ocorrência excluída com sucesso!"<<endl;
+            return;
+        }
+    }
+    cout << "Ocorrência ou locação não encontrada!"<< endl;
+}
+
+//Função para alterar ocorrência
+
+//Função para listar ocorrência
+
+//Função Menu ocorrência
 
 int main() {
     int opcao;
